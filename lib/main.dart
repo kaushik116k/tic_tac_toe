@@ -101,7 +101,7 @@ class _HomePageState extends State<HomePage> {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
               itemBuilder: (context, index){
                 return GestureDetector(
-                  onTap: (){},//_onTap(index);},
+                  onTap: (){_onTap(index);},
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
@@ -150,6 +150,126 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+    );
+  }
+
+  // Show the respective response on tapping the box
+  void _onTap(int index){
+    setState(() {
+      if(oTurn && displayElement[index] == '') {
+        displayElement[index] = 'O';
+      } else if(!oTurn && displayElement[index] == '') {
+        displayElement[index] = 'X';
+      }
+
+      oTurn = !oTurn;
+      filledBoxes++;
+
+      _checkWinner();
+    });
+  }
+
+  // checks if any player won or not
+  void _checkWinner() {
+
+    // Checking rows
+    if (displayElement[0] == displayElement[1] &&
+        displayElement[0] == displayElement[2] &&
+        displayElement[0] != '') {
+      _showWinDialog(displayElement[0]);
+    }
+    if (displayElement[3] == displayElement[4] &&
+        displayElement[3] == displayElement[5] &&
+        displayElement[3] != '') {
+      _showWinDialog(displayElement[3]);
+    }
+    if (displayElement[6] == displayElement[7] &&
+        displayElement[6] == displayElement[8] &&
+        displayElement[6] != '') {
+      _showWinDialog(displayElement[6]);
+    }
+
+    // Checking Column
+    if (displayElement[0] == displayElement[3] &&
+        displayElement[0] == displayElement[6] &&
+        displayElement[0] != '') {
+      _showWinDialog(displayElement[0]);
+    }
+    if (displayElement[1] == displayElement[4] &&
+        displayElement[1] == displayElement[7] &&
+        displayElement[1] != '') {
+      _showWinDialog(displayElement[1]);
+    }
+    if (displayElement[2] == displayElement[5] &&
+        displayElement[2] == displayElement[8] &&
+        displayElement[2] != '') {
+      _showWinDialog(displayElement[2]);
+    }
+
+    // Checking Diagonal
+    if (displayElement[0] == displayElement[4] &&
+        displayElement[0] == displayElement[8] &&
+        displayElement[0] != '') {
+      _showWinDialog(displayElement[0]);
+    }
+    if (displayElement[2] == displayElement[4] &&
+        displayElement[2] == displayElement[6] &&
+        displayElement[2] != '') {
+      _showWinDialog(displayElement[2]);
+    } else if (filledBoxes == 9) {
+      _showDrawDialog();
+    }
+  }
+
+  // Display AlertDialog for winner
+  void _showWinDialog(String winner) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return AlertDialog(
+            title: Text("\" $winner \" is Winner!!!"),
+            actions: [
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.of(context).pop();
+                  _clearBoard();
+                },
+                child: const Text("Play Again"),
+              ),
+            ],
+          );
+
+        }
+    );
+
+    setState(() {
+      if (winner == 'O') {
+        oScore++;
+      } else if (winner == 'X') {
+        xScore++;
+      }
+    });
+  }
+
+  // Display AlertDialog for draw match
+  void _showDrawDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return AlertDialog(
+            title: const Text("Draw!!!"),
+            actions: [
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.of(context).pop();
+                  _clearBoard();
+                },
+                child: const Text("Play Again"),
+              ),
+            ],
+          );
+
+        }
     );
   }
 
