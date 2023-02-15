@@ -127,7 +127,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                 margin: const EdgeInsets.only(bottom: 30,left: 20),
                 child: ElevatedButton(
-                  onPressed: (){},//_clearBoard();},
+                  onPressed: (){_clearBoard();},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.purple,
                   ),
@@ -139,7 +139,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                 margin: const EdgeInsets.only(left: 165, bottom: 30),
                 child: ElevatedButton(
-                  onPressed: (){},//_clearScoreBoard();},
+                  onPressed: (){_clearScoreBoard();},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.purple,
                   ),
@@ -152,5 +152,30 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+
+  // Clear Board but not the scores
+  _clearBoard() {
+    //print(filledBoxes);
+    setState(() {
+      for(int i = 0; i < 9; i++){
+        displayElement[i] = '';
+      }
+    });
+    filledBoxes = 0;
+    //print(filledBoxes);
+  }
+
+  // clear everything and start new game
+  _clearScoreBoard() {
+    setState(() {
+      xScore = 0;
+      oScore = 0;
+      oTurn = true;
+
+      _clearBoard();
+    });
+  }
+
 
 }
