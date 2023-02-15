@@ -1,4 +1,4 @@
-# first_app
+# TIC TAC TOE
 
 A new Flutter project.
 
