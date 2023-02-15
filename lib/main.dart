@@ -1,6 +1,8 @@
 import 'package:first_app/player.dart';
 import 'package:flutter/material.dart';
 
+import 'computer.dart';
+
 void main(){
   runApp(const MyApp());
 }
@@ -51,7 +53,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ElevatedButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const Player()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const Computer()));
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple,
