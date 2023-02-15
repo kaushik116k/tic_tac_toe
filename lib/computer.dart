@@ -150,14 +150,14 @@ class _ComputerState extends State<Computer> {
 
   // Show the respective response on tapping the box
   void _onTap(int index){
-    print(oTurn);
+    //print(oTurn);
     setState(() {
       if(displayElement[index] == ''){
         displayElement[index] = 'O';
       }
 
       oTurn = !oTurn;
-      print("enter: $oTurn");
+      //print("enter: $oTurn");
       computerTurn();
       filledBoxes++;
       _checkWinner();
@@ -361,18 +361,18 @@ class _ComputerState extends State<Computer> {
 
       // exception case
       else if(!oTurn){
-        print("oturn: $oTurn");
+        //print("oturn: $oTurn");
         while(true){
           var rand = Random();
           int index = rand.nextInt(8);
-          print(index);
+          //print(index);
           if(displayElement[index] == ''){
             displayElement[index] = 'X';
             oTurn = !oTurn;
             break;
           }
         }
-        print("end $oTurn");
+        //print("end $oTurn");
       }
     });
   }
