@@ -269,6 +269,7 @@ class _PlayerState extends State<Player> {
   // Clear Board but not the scores
   _clearBoard() {
     //print(filledBoxes);
+    oTurn = true;
     setState(() {
       for(int i = 0; i < 9; i++){
         displayElement[i] = '';
@@ -283,7 +284,6 @@ class _PlayerState extends State<Player> {
     setState(() {
       xScore = 0;
       oScore = 0;
-      oTurn = true;
 
       _clearBoard();
     });

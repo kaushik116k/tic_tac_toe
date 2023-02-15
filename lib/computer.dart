@@ -150,14 +150,12 @@ class _ComputerState extends State<Computer> {
 
   // Show the respective response on tapping the box
   void _onTap(int index){
-    //print(oTurn);
     setState(() {
       if(displayElement[index] == ''){
         displayElement[index] = 'O';
       }
 
       oTurn = !oTurn;
-      //print("enter: $oTurn");
       computerTurn();
       filledBoxes++;
       _checkWinner();
@@ -168,212 +166,162 @@ class _ComputerState extends State<Computer> {
     setState(() {
       //row 1
       if(displayElement[0] == 'X' && displayElement[1] == 'X' && displayElement[2] == ''){
-      oTurn = !oTurn;
-      displayElement[2] = 'X';
+        displayElement[2] = 'X';
       } else if(displayElement[0] == 'X' && displayElement[2] == 'X' && displayElement[1] == ''){
-      oTurn = !oTurn;
-      displayElement[1] = 'X';
+        displayElement[1] = 'X';
       } else if(displayElement[1] == 'X' && displayElement[2] == 'X' && displayElement[0] == ''){
-      oTurn = !oTurn;
-      displayElement[0] = 'X';
+        displayElement[0] = 'X';
       }
 
       // row 2
       else if(displayElement[3] == 'X' && displayElement[4] == 'X' && displayElement[5] == ''){
-      displayElement[5] = 'X';
-      oTurn = !oTurn;
+        displayElement[5] = 'X';
       } else if(displayElement[4] == 'X' && displayElement[5] == 'X' && displayElement[3] == ''){
-      displayElement[3] = 'X';
-      oTurn = !oTurn;
+        displayElement[3] = 'X';
       }else if(displayElement[5] == 'X' && displayElement[3] == 'X' && displayElement[4] == ''){
-      displayElement[4] = 'X';
-      oTurn = !oTurn;
+        displayElement[4] = 'X';
       }
 
       // row 3
       else if(displayElement[0] == 'X' && displayElement[7] == 'X' && displayElement[8] == ''){
-      displayElement[7] = 'X';
-      oTurn = !oTurn;
+        displayElement[7] = 'X';
       } else if(displayElement[7] == 'X' && displayElement[8] == '0' && displayElement[6] == ''){
-      displayElement[6] = 'X';
-      oTurn = !oTurn;
+        displayElement[6] = 'X';
       }else if(displayElement[8] == 'X' && displayElement[6] == 'X' && displayElement[7] == ''){
-      displayElement[7] = 'X';
-      oTurn = !oTurn;
+        displayElement[7] = 'X';
       }
 
 
       // column 1
       else if(displayElement[0] == 'X' && displayElement[3] == 'X' && displayElement[6] == ''){
-      displayElement[6] = 'X';
-      oTurn = !oTurn;
+        displayElement[6] = 'X';
       } else if(displayElement[3] == 'X' && displayElement[6] == 'X' && displayElement[0] == ''){
-      displayElement[0] = 'X';
-      oTurn = !oTurn;
+        displayElement[0] = 'X';
       } else if(displayElement[6] == 'X' && displayElement[0] == 'X' && displayElement[3] == ''){
-      displayElement[3] = 'X';
-      oTurn = !oTurn;
+        displayElement[3] = 'X';
       }
 
       // column 2
       else if(displayElement[1] == 'X' && displayElement[4] == 'X' && displayElement[7] == ''){
-      displayElement[7] = 'X';
-      oTurn = !oTurn;
+        displayElement[7] = 'X';
       } else if(displayElement[4] == 'X' && displayElement[7] == 'X' && displayElement[1] == ''){
-      displayElement[1] = 'X';
-      oTurn = !oTurn;
+        displayElement[1] = 'X';
       }else if(displayElement[7] == 'X' && displayElement[1] == 'X' && displayElement[4] == ''){
-      displayElement[4] = 'X';
-      oTurn = !oTurn;
+        displayElement[4] = 'X';
       }
 
       // column 3
       else if(displayElement[2] == 'X' && displayElement[5] == 'X' && displayElement[8] == ''){
-      displayElement[8] = 'X';
-      oTurn = !oTurn;
+        displayElement[8] = 'X';
       } else if(displayElement[5] == 'X' && displayElement[8] == 'X' && displayElement[2] == ''){
-      displayElement[2] = 'X';
-      oTurn = !oTurn;
+        displayElement[2] = 'X';
       }else if(displayElement[8] == 'X' && displayElement[2] == 'X' && displayElement[5] == ''){
-      displayElement[5] = 'X';
-      oTurn = !oTurn;
+        displayElement[5] = 'X';
       }
 
       // diagonal 1
       else if(displayElement[0] == 'X' && displayElement[4] == 'X' && displayElement[8] == ''){
-      displayElement[8] = 'X';
-      oTurn = !oTurn;
+        displayElement[8] = 'X';
       } else if(displayElement[4] == 'X' && displayElement[8] == 'X' && displayElement[0] == ''){
-      displayElement[0] = 'X';
-      oTurn = !oTurn;
+        displayElement[0] = 'X';
       } else if(displayElement[8] == 'X' && displayElement[0] == 'X' && displayElement[4] == ''){
-      displayElement[4] = 'X';
-      oTurn = !oTurn;
+        displayElement[4] = 'X';
       }
 
       // diagonal 2
       else if(displayElement[2] == 'X' && displayElement[4] == 'X' && displayElement[6] == ''){
-      displayElement[6] = 'X';
-      oTurn = !oTurn;
+        displayElement[6] = 'X';
       } else if(displayElement[4] == 'X' && displayElement[6] == 'X' && displayElement[2] == ''){
-      displayElement[2] = 'X';
-      oTurn = !oTurn;
+        displayElement[2] = 'X';
       }else if(displayElement[6] == 'X' && displayElement[2] == 'X' && displayElement[4] == ''){
-      displayElement[4] = 'X';
-      oTurn = !oTurn;
+        displayElement[4] = 'X';
       }
       // row 1
       else if(displayElement[0] == 'O' && displayElement[1] == 'O' && displayElement[2] == ''){
-        oTurn = !oTurn;
         displayElement[2] = 'X';
       } else if(displayElement[0] == 'O' && displayElement[2] == 'O' && displayElement[1] == ''){
-        oTurn = !oTurn;
         displayElement[1] = 'X';
       } else if(displayElement[1] == 'O' && displayElement[2] == 'O' && displayElement[0] == ''){
-        oTurn = !oTurn;
         displayElement[0] = 'X';
       }
 
       // row 2
       else if(displayElement[3] == 'O' && displayElement[4] == 'O' && displayElement[5] == ''){
         displayElement[5] = 'X';
-        oTurn = !oTurn;
       } else if(displayElement[4] == 'O' && displayElement[5] == 'O' && displayElement[3] == ''){
         displayElement[3] = 'X';
-        oTurn = !oTurn;
       }else if(displayElement[5] == 'O' && displayElement[3] == 'O' && displayElement[4] == ''){
         displayElement[4] = 'X';
-        oTurn = !oTurn;
       }
 
       // row 3
       else if(displayElement[0] == 'O' && displayElement[7] == 'O' && displayElement[8] == ''){
         displayElement[7] = 'X';
-        oTurn = !oTurn;
       } else if(displayElement[7] == 'O' && displayElement[8] == '0' && displayElement[6] == ''){
         displayElement[6] = 'X';
-        oTurn = !oTurn;
       }else if(displayElement[8] == 'O' && displayElement[6] == 'O' && displayElement[7] == ''){
         displayElement[7] = 'X';
-        oTurn = !oTurn;
       }
 
 
       // column 1
       else if(displayElement[0] == 'O' && displayElement[3] == 'O' && displayElement[6] == ''){
         displayElement[6] = 'X';
-        oTurn = !oTurn;
       } else if(displayElement[3] == 'O' && displayElement[6] == 'O' && displayElement[0] == ''){
         displayElement[0] = 'X';
-        oTurn = !oTurn;
       } else if(displayElement[6] == 'O' && displayElement[0] == 'O' && displayElement[3] == ''){
         displayElement[3] = 'X';
-        oTurn = !oTurn;
       }
 
       // column 2
       else if(displayElement[1] == 'O' && displayElement[4] == 'O' && displayElement[7] == ''){
         displayElement[7] = 'X';
-        oTurn = !oTurn;
       } else if(displayElement[4] == 'O' && displayElement[7] == 'O' && displayElement[1] == ''){
         displayElement[1] = 'X';
-        oTurn = !oTurn;
       }else if(displayElement[7] == 'O' && displayElement[1] == 'O' && displayElement[4] == ''){
         displayElement[4] = 'X';
-        oTurn = !oTurn;
       }
 
       // column 3
       else if(displayElement[2] == 'O' && displayElement[5] == 'O' && displayElement[8] == ''){
         displayElement[8] = 'X';
-        oTurn = !oTurn;
       } else if(displayElement[5] == 'O' && displayElement[8] == 'O' && displayElement[2] == ''){
         displayElement[2] = 'X';
-        oTurn = !oTurn;
       }else if(displayElement[8] == 'O' && displayElement[2] == 'O' && displayElement[5] == ''){
         displayElement[5] = 'X';
-        oTurn = !oTurn;
       }
 
       // diagonal 1
       else if(displayElement[0] == 'O' && displayElement[4] == 'O' && displayElement[8] == ''){
         displayElement[8] = 'X';
-        oTurn = !oTurn;
       } else if(displayElement[4] == 'O' && displayElement[8] == 'O' && displayElement[0] == ''){
         displayElement[0] = 'X';
-        oTurn = !oTurn;
       } else if(displayElement[8] == 'O' && displayElement[0] == 'O' && displayElement[4] == ''){
         displayElement[4] = 'X';
-        oTurn = !oTurn;
       }
 
       // diagonal 2
       else if(displayElement[2] == 'O' && displayElement[4] == 'O' && displayElement[6] == ''){
         displayElement[6] = 'X';
-        oTurn = !oTurn;
       } else if(displayElement[4] == 'O' && displayElement[6] == 'O' && displayElement[2] == ''){
         displayElement[2] = 'X';
-        oTurn = !oTurn;
       }else if(displayElement[6] == 'O' && displayElement[2] == 'O' && displayElement[4] == ''){
         displayElement[4] = 'X';
-        oTurn = !oTurn;
       }
 
       // exception case
       else if(!oTurn){
-        //print("oturn: $oTurn");
         while(true){
           var rand = Random();
           int index = rand.nextInt(8);
-          //print(index);
           if(displayElement[index] == ''){
             displayElement[index] = 'X';
-            oTurn = !oTurn;
             break;
           }
         }
-        //print("end $oTurn");
       }
+
+      oTurn = !oTurn;
     });
   }
 
@@ -484,6 +432,7 @@ class _ComputerState extends State<Computer> {
   // Clear Board but not the scores
   _clearBoard() {
     //print(filledBoxes);
+    oTurn = true;
     setState(() {
       for(int i = 0; i < 9; i++){
         displayElement[i] = '';
@@ -498,7 +447,6 @@ class _ComputerState extends State<Computer> {
     setState(() {
       xScore = 0;
       oScore = 0;
-      oTurn = true;
 
       _clearBoard();
     });
