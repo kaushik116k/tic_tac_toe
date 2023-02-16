@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 class MyApp extends StatelessWidget{
   const MyApp({super.key});
@@ -321,6 +323,17 @@ class _HardState extends State<Hard> {
         // exception case
         else if(displayElement[4] == 'O' && displayElement[8] == 'O'&& displayElement[2] == ''){
           displayElement[2] = 'X';
+        }
+
+        else if(!oTurn) {
+          while (true) {
+            var rand = Random();
+            int index = rand.nextInt(9);
+            if (displayElement[index] == '') {
+              displayElement[index] = 'X';
+              break;
+            }
+          }
         }
 
         oTurn = !oTurn;
