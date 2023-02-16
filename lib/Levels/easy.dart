@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-
+import 'dart:math';
 class MyApp extends StatelessWidget{
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: Player(),);
+    return const MaterialApp(home: Easy(),);
   }
 }
 
-class Player extends StatefulWidget {
-  const Player({super.key});
+class Easy extends StatefulWidget {
+  const Easy({super.key});
 
   @override
-  State<Player> createState() => _PlayerState();
+  State<Easy> createState() => _EasyState();
 }
 
-class _PlayerState extends State<Player> {
+class _EasyState extends State<Easy> {
   int xScore = 0, oScore = 0;
 
   List<String> displayElement = ['', '', '', '', '', '', '', '', ''];
@@ -149,17 +149,31 @@ class _PlayerState extends State<Player> {
   // Show the respective response on tapping the box
   void _onTap(int index){
     setState(() {
-      if(oTurn && displayElement[index] == '') {
+      if(displayElement[index] == ''){
         displayElement[index] = 'O';
-        oTurn = !oTurn;
-      } else if(!oTurn && displayElement[index] == '') {
-        displayElement[index] = 'X';
+        filledBoxes++;
         oTurn = !oTurn;
       }
-
-      filledBoxes++;
-
+      _computerTurn();
       _checkWinner();
+    });
+  }
+
+  void _computerTurn() {
+    setState(() {
+      // exception case
+      if(!oTurn && filledBoxes < 8){
+        while(true){
+          var rand = Random();
+          int index = rand.nextInt(8);
+          if(displayElement[index] == ''){
+            displayElement[index] = 'X';
+            oTurn = !oTurn;
+            filledBoxes++;
+            break;
+          }
+        }
+      }
     });
   }
 
@@ -172,41 +186,41 @@ class _PlayerState extends State<Player> {
         displayElement[0] != '') {
       _showWinDialog(displayElement[0]);
     }
-    if (displayElement[3] == displayElement[4] &&
+    else if (displayElement[3] == displayElement[4] &&
         displayElement[3] == displayElement[5] &&
         displayElement[3] != '') {
       _showWinDialog(displayElement[3]);
     }
-    if (displayElement[6] == displayElement[7] &&
+    else if (displayElement[6] == displayElement[7] &&
         displayElement[6] == displayElement[8] &&
         displayElement[6] != '') {
       _showWinDialog(displayElement[6]);
     }
 
     // Checking Column
-    if (displayElement[0] == displayElement[3] &&
+    else if (displayElement[0] == displayElement[3] &&
         displayElement[0] == displayElement[6] &&
         displayElement[0] != '') {
       _showWinDialog(displayElement[0]);
     }
-    if (displayElement[1] == displayElement[4] &&
+    else if (displayElement[1] == displayElement[4] &&
         displayElement[1] == displayElement[7] &&
         displayElement[1] != '') {
       _showWinDialog(displayElement[1]);
     }
-    if (displayElement[2] == displayElement[5] &&
+    else if (displayElement[2] == displayElement[5] &&
         displayElement[2] == displayElement[8] &&
         displayElement[2] != '') {
       _showWinDialog(displayElement[2]);
     }
 
     // Checking Diagonal
-    if (displayElement[0] == displayElement[4] &&
+    else if (displayElement[0] == displayElement[4] &&
         displayElement[0] == displayElement[8] &&
         displayElement[0] != '') {
       _showWinDialog(displayElement[0]);
     }
-    if (displayElement[2] == displayElement[4] &&
+    else if (displayElement[2] == displayElement[4] &&
         displayElement[2] == displayElement[6] &&
         displayElement[2] != '') {
       _showWinDialog(displayElement[2]);
