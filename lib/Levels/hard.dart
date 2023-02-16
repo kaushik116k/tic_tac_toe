@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 class MyApp extends StatelessWidget{
   const MyApp({super.key});
 
@@ -150,7 +149,6 @@ class _HardState extends State<Hard> {
   // Show the respective response on tapping the box
   void _onTap(int index){
     setState(() {
-      print(oTurn);
       if(oTurn && displayElement[index] == ''){
         displayElement[index] = 'O';
         oTurn = !oTurn;
@@ -194,7 +192,7 @@ class _HardState extends State<Hard> {
 
         // column 1
         else if(displayElement[0] == 'X' && displayElement[3] == 'X' && displayElement[6] == ''){
-          displayElement[6] = 'X';;
+          displayElement[6] = 'X';
         } else if(displayElement[3] == 'X' && displayElement[6] == 'X' && displayElement[0] == ''){
           displayElement[0] = 'X';
         } else if(displayElement[6] == 'X' && displayElement[0] == 'X' && displayElement[3] == ''){
@@ -321,20 +319,12 @@ class _HardState extends State<Hard> {
         }
 
         // exception case
-        else if(!oTurn){
-          while(true){
-            var rand = Random();
-            int index = rand.nextInt(8);
-            if(displayElement[index] == ''){
-              displayElement[index] = 'X';
-              break;
-            }
-          }
+        else if(displayElement[4] == 'O' && displayElement[8] == 'O'&& displayElement[2] == ''){
+          displayElement[2] = 'X';
         }
 
         oTurn = !oTurn;
         filledBoxes++;
-        print(displayElement);
       }
     });
   }
