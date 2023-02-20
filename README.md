@@ -1,6 +1,6 @@
 # TIC TAC TOE
 
-A new Flutter project.
+A game
 
 ## Getting Started
 

@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+
+// this is a hard levels
 class MyApp extends StatelessWidget{
   const MyApp({super.key});
 
@@ -363,11 +365,6 @@ class _HardState extends State<Hard> {
     }
 
     // Checking Column
-    else if (displayElement[0] == displayElement[3] &&
-        displayElement[0] == displayElement[6] &&
-        displayElement[0] != '') {
-      _showWinDialog(displayElement[0]);
-    }
     else if (displayElement[1] == displayElement[4] &&
         displayElement[1] == displayElement[7] &&
         displayElement[1] != '') {
@@ -378,6 +375,12 @@ class _HardState extends State<Hard> {
         displayElement[2] != '') {
       _showWinDialog(displayElement[2]);
     }
+    else if (displayElement[0] == displayElement[3] &&
+        displayElement[0] == displayElement[6] &&
+        displayElement[0] != '') {
+      _showWinDialog(displayElement[0]);
+    }
+
 
     // Checking Diagonal
     else if (displayElement[0] == displayElement[4] &&
