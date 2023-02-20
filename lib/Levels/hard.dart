@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-// this is a hard level
+// this is a hard levels
 class MyApp extends StatelessWidget{
   const MyApp({super.key});
 
